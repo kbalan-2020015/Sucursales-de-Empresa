@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">Sucursales_Empresa</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" routerLink="/home" aria-current="page"  *ngIf="token" >Home</a> 
+          <a class="nav-link active" routerLink="/company" aria-current="page"  *ngIf="token" >Empresa</a>
+          <a class="nav-link active" routerLink="/office" aria-current="page"  *ngIf="token" >Sucursales</a>
+          <a class="nav-link active" routerLink="/product" aria-current="page"  *ngIf="token" >Productos</a>
+          <a class="nav-link active" routerLink="/profile" aria-current="page"  *ngIf="token" >Mi Perfil</a>
+          <a *ngIf="!token" class="nav-link" routerLink="">Login</a>
+          <a *ngIf="!token" class="nav-link" routerLink="/register">Register</a>
+        </div>
+        <div class="navbar-nav" *ngIf="token">
+          <a class="nav-link" (click)="logOut();" type="button" routerLink="/login">Log Out</a>  
+        </div>
+      </div>
+    </div>
+  </nav>
+

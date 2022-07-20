@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <img src="https://www.efficy.com/wp-content/uploads/2020/10/proceso-comercial-grandes-empresas.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 650px ;">
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-5 text-black">
+                                <h3 class="mb-5 text-uppercase">Register</h3>
+                                <form (ngSubmit)="register()" #registerForm="ngForm" class="mb-5">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input [(ngModel)]="company.name" name="name" type="text" id="form3Example1m" class="form-control form-control-lg" required>
+                                                <label class="form-label" for="form3Example1m">Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input [(ngModel)]="company.username" name="username" type="text" id="form3Example1n" class="form-control form-control-lg" required>
+                                                <label class="form-label" for="form3Example1n">Username</label>                   
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input [(ngModel)]="company.typeOfCompany" type="text" name="typeOfCompany" id="form3Example1n" class="form-control form-control-lg" required>
+                                                <label class="form-label" for="form3Example1n">TypeOfCompany</label>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input [(ngModel)]="company.email" type="text" id="form3Example8" name="email" class="form-control form-control-lg" required="">
+                                                <label class="form-label" for="formExample8">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input [(ngModel)]="company.password" name="password" type="password" id="form3Example1n" class="form-control form-control-lg" required>
+                                                <label class="form-label" for="form3Example1n">Password</label>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <input ngModel name="checkboxTerms" class="form-check-input " type="checkbox"
+                                            required>
+                                        <label class="form-check-label ms-2">Aceptar <a
+                                                href="https://en.wikipedia.org/wiki/Contractual_term" target="_blank"
+                                                rel="noopener noreferrer">terminos y condiciones</a></label>
+                                    </p>
+                                    <button [disabled]="!registerForm.form.valid" class="btn btn-outline-danger btn-lg px-5" type="submit" >Registrarse</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

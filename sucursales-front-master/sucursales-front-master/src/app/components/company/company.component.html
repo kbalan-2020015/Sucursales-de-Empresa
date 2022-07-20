@@ -1,0 +1,150 @@
+<app-navbar></app-navbar>
+
+
+<div class="text-center mt-2 mb-2">
+    <img src="https://images.vexels.com/media/users/3/144883/isolated/preview/09a503901819e475a3c352ddd3e528b3-carrera-de-construccion-de-la-empresa.png" class="img-responsive img-rounded" widht="8" height="50">
+
+    <button class="btn btn-success btn-icon-split" data-bs-toggle="modal" data-bs-target="#addCompany">
+        <span class="icon">
+        <i class="fa fa-building" aria-hidden="true"></i>
+    </span>
+    <span class="text">New Company</span>
+    </button>
+</div>
+<hr>
+
+
+<div class="bg-success">
+<div class="row justify-content-center px-4" *ngIf="companies">
+    <div *ngFor="let company of companies" class="card m-4" style="width: 18rem;">
+        <div class="card-body">
+            <div class="bg-light">
+            <h5 class="card-title text-center">{{company.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{company.username}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{company.typeOfCompany}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{company.email}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{company.password}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{company.role}}</h6>
+            <div *ngIf="company.role === 'COMPANY'" class="text-center ms-3">
+                <button (click)="getCompany(company._id)" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#updateCompany" class="btn btn-primary m-2" aria-controls="offcanvasExample" ><i class="fa fa-pencil" aria-hidden="true"></i>Update
+                </button>
+                <button (click)="deleteCompany(company._id)" class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                </button>
+
+            </div>
+        </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="addCompany" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-building" aria-hidden="true"></i>&nbsp; New Company:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #addCompanyForm="ngForm">
+                <div class="mb-3">
+                    <label for="nameCompany" class="form-lable">Name</label>
+                    <input [(ngModel)]="company.name" type="text" name="name" id="nameCompany" class="form-control" aria-describedby="emailHelp">
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="typeCompany" class="form-label">Type Of Company</label>
+                    <input [(ngModel)]="company.typeOfCompany" name="type" class="form-control" type="text" id="typeCompany">
+                </div>
+
+                <div class="mb-3">
+                    <label for="userCompany" class="form-label">Username</label>
+                    <input [(ngModel)]="company.username" name="username" type="text" class="form-control" id="userCompany">
+                </div>
+                <div class="mb-3">
+                    <label for="emailCompany" class="form-label">Email</label>
+                    <input [(ngModel)]="company.email" name="email" class="form-control" type="text" id="emailCompany">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordCompany" class="form-label">Password</label>
+                    <input [(ngModel)]="company.password" name="password" type="password" class="form-control" id="passwordCompany">
+                </div>
+                <div class="mb-3">
+                    <label for="phoneCompany" class="form-label">Phone</label>
+                    <input [(ngModel)]="company.phone" name="phone" class="form-control" type="text" id="phoneCompany">
+                </div>
+                <label class="form-label">Role</label>
+                    <select [(ngModel)]="company.role" name="role" class="form-select">                
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="COMPANY">COMPANY</option>
+                </select>
+                </form>
+                
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>Discard
+                </button>
+                <button (click)="registerCompany_Admin(addCompanyForm)" type="submit" class="btn btn-success" data-bs-dismiss="modal">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>Register Company
+
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="updateCompany" tabindex="-1" aria-labelledby="updateCompany" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-pencil" aria-hidden="true"></i>Update Company</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="updateCompany()" *ngIf="companyUpdate">
+                <div class="mb-3">
+                    <label for="nameUpdate" class="form-label">Name</label>
+                    <input [(ngModel)]="companyUpdate.name" name="name" type="text" class="form-control" id="nameUpdate" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="usernameUpdate" class="form-label">Username</label>
+                    <input [(ngModel)]="companyUpdate.username" type="text" name="username" id="usernameUpdate" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="emailUpdate" class="form-label">Email</label>
+                    <input [(ngModel)]="companyUpdate.email" name="email" type="text" class="form-control" id="emailUpdate">
+                </div>
+                    <div class="mb-3">
+                        <label for="typeUpdate" class="form-label">Type Of Company</label>
+                        <input [(ngModel)]="companyUpdate.type" name="type" type="text" class="form-control" id="typeUpdate">
+
+                    </div>
+                    <label class="form-label">
+                        Role
+                    </label>
+                        <select [(ngModel)]="companyUpdate.role" name="role" class="form-select">
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="COMPANY">COMPANY</option>
+                        </select>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i>Discard
+                            </button>
+                            <button type="submit" class="btn btn-success" data-bs-dismiss="modal"><i class="fa fa-floppy-o" aria-hidden="true"></i>Update Company
+                            </button>
+
+                        </div>
+            </form>
+ 
+        </div>
+        </div>
+
+    </div>
+
+</div>

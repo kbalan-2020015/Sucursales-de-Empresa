@@ -1,0 +1,153 @@
+<app-navbar></app-navbar>
+
+<br>
+
+    <div class="container">
+        <div class="row height d-flex justify-contetn-center align-itmes-center">
+            <div class="col-md-8">
+                <div class="search">
+                    <i class="fa fa-search"></i>
+                    <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="Search Products By Name">
+
+                    <label class="custom-radio-checkbox m-3">
+                        <input class="custom-radio-checkbox__input" type="radio" name="genero" value="stockAsc" checked (click)="getProductsByName()">
+                        <span class="custom-radio-checkbox__text">Name</span>
+                    </label>
+                    <label class="custom-radio-checkbox m-3">
+                        <input class="custom-radio-checkbox__input" type="radio" name="genero" value="stockAsc" checked  (click)="getProductsByProvider()">
+                        <span class="custom-radio-checkbox__text">Provider</span>
+                      </label>
+                      
+                        <label class="custom-radio-checkbox m-3">
+                            <input class="custom-radio-checkbox__input" type="radio" name="genero" value="stockAsc" checked  (click)="getProductsByAsc()">
+                            <span class="custom-radio-checkbox__text">Stock Asc</span>
+                        </label>
+                      
+                        <label class="custom-radio-checkbox m-3">
+                            <input class="custom-radio-checkbox__input" type="radio" name="genero" value="stockDesc" (click)="getProductsByDes()" >
+                            <span class="custom-radio-checkbox__text m-2">Stock Des</span>
+                        </label>   
+                        <input [(ngModel)]="provider" name="provider" type="text" class="form-control" placeholder="Search Products By Provider">
+                 
+                </div>
+
+            </div>            
+            
+        </div><br><br><br><br><br>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+<div class="text-center">
+ <img src="data:image/jpeg;base64,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" class="img-responsive img-rounded" widht="8" height="50">
+
+    <button type="button" class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">New
+        Product</button>
+    
+    
+    </div>
+
+
+
+
+<div class="bg-dark">
+    <div class="row justify-content-center px-4" *ngIf="products">               
+        <div *ngFor="let product of products |search:search |search:provider" class="card m-4" style="width: 18rem;">
+            <div class="card-body">
+                <div class="bg-light">
+                <h5 class="card-title text-center">{{product.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Provider: {{product.provider}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Stock: {{product.stock}}</h6>
+                    <button (click)="getProduct(product._id)" class="btn btn-primary m-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" class="btn btn-primary m-2" aria-controls="offcanvasExample" ><i class="fa fa-pencil" aria-hidden="true"></i>Update
+                    </button>
+                    <button (click)="deleteProduct(product._id)" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                    </button>
+    
+                </div>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <form #newProductForm="ngForm">
+                <div class="mb-3">
+                    <div>
+                        <label for="exampleInputEmail" class="form-label">Name</label>
+                        <input [(ngModel)]="product.name" name="name" type="text" class="form-control"
+                            id="exampleInputEmail" aria-describedby="emailHelp">
+                    </div>
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label">Proveedor</label>
+                        <input [(ngModel)]="product.provider " name="provider" type="text" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label">Stock</label>
+                        <input [(ngModel)]="product.stock " name="stock" type="text" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button (click)="newProduct(newProductForm)" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+
+    
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Update Product</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+
+        </button>
+
+    </div>
+    <div class="offcanvas-body">
+        <form (ngSubmit)="updateProduct()" *ngIf="productId">
+            <div class="mb-3">
+                <label for="exampleInputEmail" class="form-label">Name</label>
+                <input [(ngModel)]="productId.name" name="name" class="form-control" aria-describedby="emailHelp" type="text">
+            </div>
+            <div class="mb-3">
+                <label for="exampleProvider" class="form-label">Provider</label>
+                <input [(ngModel)]="productId.provider" name="provider" class="form-control" type="text" id="exampleProvider">
+            </div>
+            <div class="mb-3">
+                <label for="exampleStock" class="form-label">Stock</label>
+                <input [(ngModel)]="productId.stock" name="stock" class="form-control" type="text" id="exampleStock">
+            </div>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-times-circle" aria-hidden="true"></i>Discard</button>
+            <button type="submit" class="btn btn-success m-4" data-bs-dismiss="offcanvas">Update
+
+            </button>
+
+        </form>
+
+    </div>
+</div>
